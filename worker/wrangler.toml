@@ -6,11 +6,11 @@ workers_dev = true
 # 非敏感配置。敏感值用 wrangler secret put 設置：
 #   GITHUB_TOKEN, ENCRYPTION_KEY, SESSION_SECRET, TURNSTILE_SECRET
 [vars]
-GITHUB_OWNER = "YOUR_GITHUB_USER"
-GITHUB_REPO = "YOUR_GITHUB_REPO"
+GITHUB_OWNER = "thomaswan564"
+GITHUB_REPO = "calendar"
 GITHUB_BRANCH = "main"
 GITHUB_PATH = "ics"
 PUBLIC_BASE_URL = "https://calendar.thomaswan.uk"
-WEB_ORIGIN = "https://YOURNAME.github.io"
+WEB_ORIGIN = "https://thomaswan564.github.io"
 SCHOOLS = "gzhu,hlu"
 # TURNSTILE_SITEKEY = "0x..."
