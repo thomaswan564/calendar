@@ -190,6 +190,11 @@ def load_cloud_config(app_dir: str) -> Dict[str, Any]:
             for key in ("cloud_base_url", "web_portal_url", "github_owner", "github_repo"):
                 value = data.get(key)
                 if isinstance(value, str) and value.strip():
+                    if key == "web_portal_url" and any(
+                        placeholder in value.upper()
+                        for placeholder in ("YOURNAME", "YOUR_REPO")
+                    ):
+                        continue
                     config[key] = value.strip()
             value = data.get("update_check")
             if isinstance(value, bool):
