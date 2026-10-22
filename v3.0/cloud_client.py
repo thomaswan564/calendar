@@ -23,7 +23,7 @@ import requests
 
 CAL_PREFIX = "CAL1."
 DEFAULT_CLOUD_BASE = "https://calendar.thomaswan.uk"
-DEFAULT_WEB_PORTAL = "https://YOURNAME.github.io/calendar/"
+DEFAULT_WEB_PORTAL = "https://thomaswan564.github.io/calendar/"
 
 # 学校中文名 -> Worker/GitHub 使用的英文代碼
 SCHOOL_CODES = {
