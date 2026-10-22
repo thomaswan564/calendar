@@ -1,3 +1,5 @@
+> **已停止維護（只讀）**：本倉庫不再接受功能更新。課表程式、ICS/CalDAV 網站、Cloudflare Worker 原始碼與自行部署指引已整合至 [thomaswan564/multi-tool](https://github.com/thomaswan564/multi-tool)。請到新倉庫查看最新功能與文件。此倉庫僅保留歷史代碼；現有雲端日曆服務端點目前仍由 Cloudflare Worker 提供。
+
 # 课程表日历 v3.0
 
 v3.0 重構：桌面程序承擔主要功能，網頁極簡化，Worker 只做後端，GitHub 保存日曆。
