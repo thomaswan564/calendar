@@ -27,14 +27,15 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     const method = request.method.toUpperCase();
+
+    if (url.pathname === "/health") {
+      return json({ ok: true }, 200, {});
+    }
+
     const cors = buildCors(request, env);
 
     if (method === "OPTIONS") {
       return new Response(null, { status: 204, headers: cors });
-    }
-
-    if (url.pathname === "/health") {
-      return json({ ok: true }, 200, cors);
     }
 
     if (!env.GITHUB_OWNER || !env.GITHUB_REPO || !env.GITHUB_TOKEN) {
@@ -1591,3 +1592,4 @@ async function safeJson(request) {
     return {};
   }
 }
+
