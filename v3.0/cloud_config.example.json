@@ -1,7 +1,7 @@
 {
   "cloud_base_url": "https://calendar.thomaswan.uk",
-  "web_portal_url": "https://YOURNAME.github.io/YOUR_REPO/",
-  "github_owner": "",
-  "github_repo": "",
+  "web_portal_url": "https://thomaswan564.github.io/calendar/",
+  "github_owner": "thomaswan564",
+  "github_repo": "calendar",
   "update_check": true
 }
