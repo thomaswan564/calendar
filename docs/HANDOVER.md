@@ -267,7 +267,7 @@ Token 只會在下一步貼到 Cloudflare secret。
 編輯 `deploy/worker/wrangler.toml`：
 
 ```toml
-name = "calendar-worker-v3"
+name = "calendar"
 main = "src/index.js"
 compatibility_date = "2026-01-01"
 workers_dev = true
@@ -624,4 +624,3 @@ APP_VERSION = 3.0.0
 - 加密/API/版本檢測：`deploy/v3.0/cloud_client.py`
 - 桌面程序測試：`deploy/v3.0/tests/test_cloud_client.py`
 - 架構文件：`deploy/docs/ARCHITECTURE.md`
-
