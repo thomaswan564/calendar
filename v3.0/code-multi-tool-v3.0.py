@@ -542,6 +542,7 @@ def build_ics_content(headers, rows, first_lesson_start, period_times=PERIOD_TIM
         location = re.sub(r"\s+", "", value("地点"))
         if location in {"未排地点", "未安排地点", "无地点", "暂无地点", "待定"}:
             location = ""
+        summary = f"{course} - {location}" if location else course
         period_start = datetime.strptime(period_times[first_period][0], "%H:%M").time()
         period_end = datetime.strptime(period_times[last_period][1], "%H:%M").time()
 
@@ -551,7 +552,7 @@ def build_ics_content(headers, rows, first_lesson_start, period_times=PERIOD_TIM
             )
             event_start = datetime.combine(event_date, period_start)
             event_end = datetime.combine(event_date, period_end)
-            events.append((event_start, event_end, course, location, start_week, interval, count))
+            events.append((event_start, event_end, summary, start_week, interval, count))
 
     if not events:
         raise ValueError("没有可生成日历事件的课程。")
@@ -567,7 +568,7 @@ def build_ics_content(headers, rows, first_lesson_start, period_times=PERIOD_TIM
         "X-WR-TIMEZONE:Asia/Shanghai",
     ]
     dtstamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
-    for index, (start, end, summary, location, start_week, interval, count) in enumerate(events, start=1):
+    for index, (start, end, summary, start_week, interval, count) in enumerate(events, start=1):
         rrule = "FREQ=WEEKLY;"
         if interval > 1:
             rrule += f"INTERVAL={interval};"
@@ -578,7 +579,7 @@ def build_ics_content(headers, rows, first_lesson_start, period_times=PERIOD_TIM
             f"UID:{uid}",
             f"DTSTAMP:{dtstamp}",
             f"SUMMARY:{_escape_ics_text(summary)}",
-            f"LOCATION:{_escape_ics_text(location)}",
+            "LOCATION:",
             f"DTSTART;TZID=Asia/Shanghai:{start.strftime('%Y%m%dT%H%M%S')}",
             f"DTEND;TZID=Asia/Shanghai:{end.strftime('%Y%m%dT%H%M%S')}",
             f"RRULE:{rrule}",
